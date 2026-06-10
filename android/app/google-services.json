@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "418908483257",
+    "project_id": "didula-api-20ed5",
+    "storage_bucket": "didula-api-20ed5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418908483257:android:5aad43838d607c892af568",
+        "android_client_info": {
+          "package_name": "com.example.didula_api"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7dwgP6Ak4__LQNcOEERdpPqbn-mN0UKM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

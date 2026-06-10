@@ -1,0 +1,70 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
+import 'package:flutter_test/flutter_test.dart';
+// ⚠️ ඔයාගේ project එකේ හැටියට මේ import path එක නිවැရදි කරගන්න
+import 'package:didula_api/services/teamservise.dart';
+
+void main() {
+  group('Teamservise Tests with Fake Firestore', () {
+    late FakeFirebaseFirestore fakeFirestore;
+    late Teamservise teamService;
+
+    setUp(() {
+      fakeFirestore = FakeFirebaseFirestore();
+      teamService = Teamservise(firestore: fakeFirestore);
+    });
+
+    // 1 වන ටෙස්ට් එක: Members List එකක් සහිතව Team එකක් සාර්ථකව සෑදීම ටෙස්ට් කිරීම
+    test('should create a team with members list successfully', () async {
+      await teamService.createTeam(
+        teamName: 'Alliance FC',
+        memberIds: ['USER_X', 'USER_Y', 'USER_Z'],
+      );
+
+      final snapshot = await fakeFirestore.collection('teams').get();
+      expect(snapshot.docs.length, 1);
+
+      final docData = snapshot.docs.first.data();
+      expect(docData['teamName'], 'Alliance FC');
+      expect(docData['teamid'], snapshot.docs.first.id);
+
+      // Members List එක හරියටම Array එකක් විදිහට වැටිලද බලයි
+      expect(docData['members'], isA<List>());
+      expect(docData['members'], ['USER_X', 'USER_Y', 'USER_Z']);
+      expect(docData['createdAt'], isNotNull);
+    });
+
+    // 2 වන ටෙස්ට් එක: Team එකක් සාර්ථකව ඩිලීට් කිරීම
+    test('should delete a team successfully', () async {
+      await fakeFirestore.collection('teams').doc('TEAM_111').set({
+        'teamid': 'TEAM_111',
+        'teamName': 'Temporary Team',
+      });
+
+      await teamService.deleteTeam('TEAM_111');
+
+      final doc = await fakeFirestore.collection('teams').doc('TEAM_111').get();
+      expect(doc.exists, false); // මැකී ඇති නිසා false විය යුතුය
+    });
+
+    // 3 වන ටෙස්ට් එක: getTeams Stream එකෙන් අලුත්ම Team එක මුලට එන විදිහට ලිස්ට් එක ලැබෙනවාද බැලීම
+    test('should stream teams ordered by createdAt descending', () async {
+      await fakeFirestore.collection('teams').doc('T1').set({
+        'teamName': 'Old Team',
+        'createdAt': Timestamp.fromDate(DateTime(2026, 1, 1)),
+      });
+
+      await fakeFirestore.collection('teams').doc('T2').set({
+        'teamName': 'New Team',
+        'createdAt': Timestamp.fromDate(DateTime(2026, 6, 1)),
+      });
+
+      final snapshot = await teamService.getTeams().first;
+
+      expect(snapshot.docs.length, 2);
+      // Descending නිසා අලුත්ම එක ('New Team') මුලින්ම තිබිය යුතුය
+      expect(snapshot.docs.first.get('teamName'), 'New Team');
+      expect(snapshot.docs.last.get('teamName'), 'Old Team');
+    });
+  });
+}
