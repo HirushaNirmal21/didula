@@ -2,9 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:didula_api/services/winteamlservice.dart';
 import 'package:flutter/material.dart';
 
-// සටහන: ඔබේ ව්‍යාපෘතියේ WinTeamservise තියෙන path එක මෙතන import කරගන්න
-// import 'path_to_your_service/teamservise.dart';
-
 class WinTeamBottomSheet extends StatefulWidget {
   const WinTeamBottomSheet({super.key});
 
@@ -235,7 +232,7 @@ class _WinTeamBottomSheetState extends State<WinTeamBottomSheet> {
                     );
 
                     if (mounted) {
-                      Navigator.pop(context); // Bottom Sheet එක වසන්න
+                      Navigator.pop(context);
                     }
                   },
                   child: const Text(

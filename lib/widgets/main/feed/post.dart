@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class PostWidget extends StatefulWidget {
-  final PostModel post; // ඔබේ PostModel එක
+  final PostModel post;
   final VoidCallback onEdit;
   final VoidCallback onDelete;
   final String CurrentUserId;

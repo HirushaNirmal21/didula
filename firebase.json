@@ -1,1 +1,37 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"didula-api-20ed5","appId":"1:418908483257:android:5aad43838d607c892af568","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"didula-api-20ed5","configurations":{"android":"1:418908483257:android:5aad43838d607c892af568","ios":"1:418908483257:ios:b5e35fb4cf8ff9982af568","web":"1:418908483257:web:904aff4c2598f1d82af568"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "didula-api-20ed5",
+          "appId": "1:418908483257:android:5aad43838d607c892af568",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "didula-api-20ed5",
+          "configurations": {
+            "android": "1:418908483257:android:5aad43838d607c892af568",
+            "ios": "1:418908483257:ios:b5e35fb4cf8ff9982af568",
+            "web": "1:418908483257:web:904aff4c2598f1d82af568"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

@@ -95,7 +95,7 @@ class _GoaldenteamcardState extends State<Goaldenteamcard> {
                 height: 20,
                 child: CircularProgressIndicator(
                   strokeWidth: 2,
-                  color: Color(0xFFFCF6BA), // Loading එකත් රන් පාටින්
+                  color: Color(0xFFFCF6BA),
                 ),
               ),
             );
@@ -127,9 +127,7 @@ class _GoaldenteamcardState extends State<Goaldenteamcard> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: const Color(
-                              0xFFBF953F,
-                            ), // ප්ලේයර්ස්ලාගේ වටේටත් පුංචි රන් බෝඩර් එකක්
+                            color: const Color(0xFFBF953F),
                             width: 1.5,
                           ),
                         ),

@@ -30,7 +30,6 @@ class _FeedScreenState extends State<FeedScreen> {
   Future<void> _migrateOldUsers() async {
     final firestore = FirebaseFirestore.instance;
     try {
-      // points field එක නැති අය විතරක් මුලින්ම ගන්නවා
       final usersSnapshot = await firestore.collection('users').get();
 
       WriteBatch batch = firestore.batch();
@@ -63,7 +62,6 @@ class _FeedScreenState extends State<FeedScreen> {
         }
       }
 
-      // 5. වෙනස්කම් තියෙනවා නම් විතරක් Commit කරනවා
       if (count > 0) {
         await batch.commit();
         print("⚡ [SUCCESS] Leaderboard Migration: Updated $count old users!");

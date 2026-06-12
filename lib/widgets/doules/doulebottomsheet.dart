@@ -19,7 +19,7 @@ class _CreateDoualBottomSheetState extends State<CreateDoualBottomSheet> {
 
   @override
   void dispose() {
-    searchController.dispose(); // Memory leak වීම වැළැක්වීමට dispose කරන්න
+    searchController.dispose();
     super.dispose();
   }
 
@@ -54,9 +54,7 @@ class _CreateDoualBottomSheetState extends State<CreateDoualBottomSheet> {
           const SizedBox(height: 20),
           TextField(
             controller: searchController,
-            style: const TextStyle(
-              color: Colors.white,
-            ), // Type කරන අකුරු සුදු පාටින් පෙනීමට
+            style: const TextStyle(color: Colors.white),
             onChanged: (value) {
               setState(() {
                 searchText = value.toLowerCase();
@@ -70,8 +68,7 @@ class _CreateDoualBottomSheetState extends State<CreateDoualBottomSheet> {
               fillColor: Colors.white10,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
-                borderSide:
-                    BorderSide.none, // Input border එක වඩාත් ලස්සන කිරීමට
+                borderSide: BorderSide.none,
               ),
             ),
           ),
@@ -94,7 +91,6 @@ class _CreateDoualBottomSheetState extends State<CreateDoualBottomSheet> {
                 final users = snapshot.data!.docs;
 
                 final filteredUsers = users.where((user) {
-                  // ආරක්ෂිතව නම string එකක් බවට හරවා check කිරීම
                   final name = (user['name'] ?? '').toString().toLowerCase();
                   return name.contains(searchText);
                 }).toList();
@@ -114,7 +110,6 @@ class _CreateDoualBottomSheetState extends State<CreateDoualBottomSheet> {
                     final user = filteredUsers[index];
                     final isSelected = selectedUserIds.contains(user.id);
 
-                    // Image URL එක ආරක්ෂිතව check කිරීම 🔍
                     final String? imageUrl = user['imageUrl'];
                     final bool hasValidUrl =
                         imageUrl != null &&
@@ -122,13 +117,12 @@ class _CreateDoualBottomSheetState extends State<CreateDoualBottomSheet> {
                         imageUrl.startsWith('http');
 
                     return Material(
-                      color: Colors
-                          .transparent, // Material එක transparent කිරීමෙන් background color එකට බාධාවක් නොවේ
+                      color: Colors.transparent,
                       child: CheckboxListTile(
                         value: isSelected,
                         activeColor: const Color.fromARGB(255, 1, 53, 136),
                         checkColor: Colors.white,
-                        // Checkbox එකේ කොටුව නිසි පරිදි පෙනීමට
+
                         side: const BorderSide(color: Colors.white60, width: 2),
                         onChanged: (_) {
                           setState(() {

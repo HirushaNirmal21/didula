@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_borders/gradient_borders.dart'; // 👈 මේක අනිවාර්යයෙන්ම import කරගන්න මල්ලි!
+import 'package:gradient_borders/gradient_borders.dart';
 
 class DualWinnerCard extends StatefulWidget {
   final String title;
@@ -9,8 +9,7 @@ class DualWinnerCard extends StatefulWidget {
   final String player2Name;
   final String player1Image;
   final String player2Image;
-  final Gradient
-  gradient; // ඔයා පිටින් දෙන ලස්සන goldGradient/silverGradient ටික බෝඩර් එකට ගන්නවා
+  final Gradient gradient;
   final VoidCallback? onTap;
   final VoidCallback? onDelete;
 
@@ -62,7 +61,6 @@ class _DualWinnerCardState extends State<DualWinnerCard> {
     }
   }
 
-  // ස්ථානය අනුව වටෙන් දිලිසෙන ලස්සන Glow Shadow එකක් දෙන ට්‍රික් එක
   Color _getGlowColor() {
     String titleLower = widget.title.toLowerCase();
     if (titleLower.contains('1st')) {
@@ -91,11 +89,9 @@ class _DualWinnerCardState extends State<DualWinnerCard> {
         margin: const EdgeInsets.only(bottom: 16),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         decoration: BoxDecoration(
-          // 🌌 Glassmorphic Background: මුළු ඇප් එකේම තේමාවට ගැලපෙන ලා ඩාර්ක් පසුබිම
           color: Colors.white.withOpacity(0.04),
           borderRadius: BorderRadius.circular(25),
 
-          // ✨ Magic Gradient Border: ඔයා පිටින් දෙන ලෝහමය ග්‍රේඩියන්ට් එක බෝඩර් එකට මැච් කළා
           border: GradientBoxBorder(width: 2, gradient: widget.gradient),
 
           // 🌟 Neon Glow Shadow
@@ -116,7 +112,7 @@ class _DualWinnerCardState extends State<DualWinnerCard> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // ලස්සන Capsule Badge එකක් ඇතුළට Title එක දාමු (1st Place, 2nd Place...)
+                //
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 10,
@@ -137,7 +133,6 @@ class _DualWinnerCardState extends State<DualWinnerCard> {
                   ),
                 ),
 
-                // ඇඩ්මින්ට විතරක් පේන Clean Delete Button එක
                 if (userRole == "admin")
                   GestureDetector(
                     onTap: widget.onDelete,

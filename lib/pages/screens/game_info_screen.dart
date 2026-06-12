@@ -54,12 +54,12 @@ class _GameInfoPageState extends State<GameInfoPage> {
         title: Text(
           "Game Info",
           style: GoogleFonts.poppins(
-            letterSpacing: 0.5, // අකුරු අතර පරතරය ලස්සන කළා
+            letterSpacing: 0.5,
             shadows: [
               Shadow(
                 blurRadius: 10.0,
                 color: Colors.black.withOpacity(0.3),
-                offset: const Offset(0, 5), // පල්ලෙහාට හෙවනැල්ලක් දාන්න
+                offset: const Offset(0, 5),
               ),
             ],
             fontSize: 28,
@@ -78,7 +78,7 @@ class _GameInfoPageState extends State<GameInfoPage> {
           children: [
             Container(
               margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 4),
-              // 🌌 ෆොටෝ එක වටේට Neon Glow එකක් දාන්න මේ Shadow එක උදව් වෙනවා
+
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
@@ -144,15 +144,11 @@ class _GameInfoPageState extends State<GameInfoPage> {
             // GAME DETAILS
             // =========================
             Container(
-              padding: const EdgeInsets.all(
-                22,
-              ), // Padding එක ලාවට වැඩි කළා හුස්ම ගන්න ඉඩ තියෙන්න
+              padding: const EdgeInsets.all(22),
               decoration: BoxDecoration(
-                // 🌌 Glassmorphic Background: ඇතුළත ලාවට විනිවිද පෙනෙන සුපිරි ඩාර්ක් ලුක් එක
                 color: Colors.white.withOpacity(0.02),
                 borderRadius: BorderRadius.circular(25),
 
-                // ⚡ Cyber Neon Gradient Border: ඇස් නිලංකාර වෙන තියුණු සයන් සහ නිල් ග්‍රේඩියන්ට් බෝඩර් එක
                 border: const GradientBoxBorder(
                   width: 1.5,
                   gradient: LinearGradient(
@@ -166,7 +162,6 @@ class _GameInfoPageState extends State<GameInfoPage> {
                   ),
                 ),
 
-                // 🔮 Premium Glow Shadow: කාඩ් එක වටෙන් ලාවට නිල් පාටින් ස්මූත් එකට දිලිසෙන ඉෆෙක්ට් එක
                 boxShadow: [
                   BoxShadow(
                     color: const Color(0xFF00D2FF).withOpacity(0.06),
@@ -377,7 +372,7 @@ class _GameInfoPageState extends State<GameInfoPage> {
                 GoRouter.of(context).push('/DuelPage');
               },
             ),
-            const SizedBox(height: 5), // Douels බටන් එකට යටින් තියෙන පරතරය
+            const SizedBox(height: 5),
 
             FutureBuilder<DocumentSnapshot>(
               future: FirebaseFirestore.instance
@@ -385,12 +380,10 @@ class _GameInfoPageState extends State<GameInfoPage> {
                   .doc(FirebaseAuth.instance.currentUser?.uid)
                   .get(),
               builder: (context, userSnapshot) {
-                // 💡 1. ඩේටා ලෝඩ් වෙනකම් සරලව ලෝඩර් එකක් පෙන්වනවා (බ්ලැක් ස්ක්‍රීන් වීම වළක්වයි)
                 if (userSnapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
                 }
 
-                // 💡 2. මොකක් හරි error එකක් ආවොත් ක්‍රෑෂ් නොවී shrink වෙනවා
                 if (userSnapshot.hasError ||
                     !userSnapshot.hasData ||
                     !userSnapshot.data!.exists) {
@@ -406,16 +399,10 @@ class _GameInfoPageState extends State<GameInfoPage> {
                   return Container(
                     width: double.infinity,
                     height: 50,
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 6,
-                    ), // බටන් අතර ලස්සන පරතරයක්
+                    margin: const EdgeInsets.symmetric(vertical: 6),
                     decoration: BoxDecoration(
-                      // 🌌 Glassmorphic Background: ඇතුළත ලාවට විනිවිද පෙනෙන ඩාර්ක් ලුක් එක
                       color: Colors.white.withOpacity(0.04),
-                      borderRadius: BorderRadius.circular(
-                        14,
-                      ), // Corner radius එක 14 කළා Soft ලුක් එකක් ගන්න
-                      // ⚡ Cyber Neon Border: අනිත් බටන්ස් වලට මැච් වෙන Electric Cyan සහ Neon Blue බෝඩර් එක
+                      borderRadius: BorderRadius.circular(14),
                       border: const GradientBoxBorder(
                         width: 1.5,
                         gradient: LinearGradient(
@@ -428,7 +415,6 @@ class _GameInfoPageState extends State<GameInfoPage> {
                         ),
                       ),
 
-                      // 🔮 Cyber Glow Shadow: බටන් එක වටෙන් ලාවට දිලිසෙන ලස්සන Neon Effect එක
                       boxShadow: [
                         BoxShadow(
                           color: const Color(0xFF00D2FF).withOpacity(0.12),
@@ -442,7 +428,7 @@ class _GameInfoPageState extends State<GameInfoPage> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
                         shadowColor: Colors.transparent,
-                        // බටන් එක ඔබද්දී ඇතුළෙන් ලස්සනට Splash (Ripple) එකක් යන්න
+
                         foregroundColor: const Color(
                           0xFF00D2FF,
                         ).withOpacity(0.2),
@@ -450,7 +436,7 @@ class _GameInfoPageState extends State<GameInfoPage> {
                           borderRadius: BorderRadius.circular(14),
                         ),
                       ),
-                      // 🗳️ අයිකන් එකත් Neon නිල් පාටින් දිලිසෙන්න සෙට් කළා
+
                       icon: const Icon(
                         Icons.how_to_vote,
                         color: Color(0xFF00D2FF),
@@ -462,13 +448,12 @@ class _GameInfoPageState extends State<GameInfoPage> {
                           color: Colors.white,
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
-                          letterSpacing:
-                              0.8, // අකුරු අතර පරතරය වැඩි කරලා Premium ගතිය ගත්තා
+                          letterSpacing: 0.8,
                         ),
                       ),
                       onPressed: () {
                         userData['id'] = userSnapshot.data!.id;
-                        // 🚀 ඔයාගේ සුපිරි GoRouter Navigation එක එහෙම්මම වැඩ!
+
                         context.push('/vote', extra: userData);
                       },
                     ),

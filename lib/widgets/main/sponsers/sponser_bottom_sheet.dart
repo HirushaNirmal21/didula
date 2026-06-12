@@ -11,14 +11,12 @@ class SponsorBottomSheet extends StatefulWidget {
 
 class _SponsorBottomSheetState extends State<SponsorBottomSheet> {
   final TextEditingController searchController = TextEditingController();
-  final SponsorService sponsorService =
-      SponsorService(); // Ensure this is imported correctly
+  final SponsorService sponsorService = SponsorService();
   String searchText = '';
 
   @override
   void dispose() {
-    searchController
-        .dispose(); // Memory leaks වැළැක්වීමට controller එක dispose කරන්න
+    searchController.dispose();
     super.dispose();
   }
 
@@ -68,12 +66,10 @@ class _SponsorBottomSheetState extends State<SponsorBottomSheet> {
                 }
 
                 return ListView.builder(
-                  // physics සහ shrinkWrap අයින් කලා මොකද Expanded එකක් ඇතුලේ තියෙන නිසා scroll වෙන්න ඕනේ
                   itemCount: users.length,
                   itemBuilder: (context, index) {
                     final user = users[index];
 
-                    // Image URL එක check කිරීම
                     final String? imageUrl = user['imageUrl'];
                     final bool hasValidUrl =
                         imageUrl != null &&
@@ -85,7 +81,7 @@ class _SponsorBottomSheetState extends State<SponsorBottomSheet> {
                       child: ListTile(
                         leading: CircleAvatar(
                           backgroundColor: Colors.grey[700],
-                          // URL එක හරිනම් විතරක් Image එක දානවා, නැත්නම් default icon එකක් දානවා
+
                           backgroundImage: hasValidUrl
                               ? NetworkImage(imageUrl)
                               : null,
@@ -108,7 +104,6 @@ class _SponsorBottomSheetState extends State<SponsorBottomSheet> {
                           onPressed: () async {
                             await sponsorService.makeSponsor(user.id);
 
-                            // මෙතනදී context එක තවමත් active ද (mounted) කියා බැලීම අනිවාර්යයි
                             if (!mounted) return;
 
                             ScaffoldMessenger.of(context).showSnackBar(

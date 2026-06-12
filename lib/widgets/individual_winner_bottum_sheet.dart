@@ -35,7 +35,7 @@ class _SeniorIndividualBottomSheetState
         color: Color(0xff081420),
         borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
       ),
-      // ⚡ StreamBuilder එක මුලටම ගත්තා. දැන් Firebase එකෙන් ඩේටා ගන්නේ එකම එක පාරයි!
+
       child: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('users').snapshots(),
         builder: (context, snapshot) {
@@ -57,10 +57,8 @@ class _SeniorIndividualBottomSheetState
 
           final allUsers = snapshot.data!.docs;
 
-          // ⚡ StatefulBuilder එක දැම්මේ සර්ච් ටයිප් කරනකොට UI එක විතරක් අප්ඩේට් වෙන්න
           return StatefulBuilder(
             builder: (BuildContext context, StateSetter setSheetState) {
-              // ⚡ ෆෝන් එකේ මෙමරි එක ඇතුළෙන්ම සර්ච් එක ෆිල්ටර් කරනවා (No More Firebase Re-fetch)
               final filteredUsers = allUsers.where((user) {
                 final userData = user.data() as Map<String, dynamic>;
                 final name = userData.containsKey('name')
@@ -165,9 +163,7 @@ class _SeniorIndividualBottomSheetState
                                   ),
                                   onTap: () {
                                     widget.onUserSelected(user.id);
-                                    Navigator.pop(
-                                      context,
-                                    ); // සිලෙක්ට් කරපු ගමන් වහන්න
+                                    Navigator.pop(context);
                                   },
                                 ),
                               );

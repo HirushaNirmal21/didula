@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gradient_borders/gradient_borders.dart'; // 👈 මේකත් බෝඩර් එකට දාමු මල්ලි
+import 'package:gradient_borders/gradient_borders.dart';
 
 class Custombutton extends StatelessWidget {
   final String text;

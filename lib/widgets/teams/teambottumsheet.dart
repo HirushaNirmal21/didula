@@ -2,9 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:didula_api/services/teamservise.dart';
 import 'package:flutter/material.dart';
 
-// සටහන: Teamservise එක තියෙන තැනින් නිවැරදිව import කරගන්න
-// import 'package:didula_api/services/teamservise.dart';
-
 class CreateTeamBottomSheet extends StatefulWidget {
   const CreateTeamBottomSheet({super.key});
 
@@ -23,7 +20,6 @@ class _CreateTeamBottomSheetState extends State<CreateTeamBottomSheet> {
 
   @override
   void dispose() {
-    // Memory leaks වැළැක්වීමට controllers ටික dispose කිරීම 🧹
     teamNameController.dispose();
     searchController.dispose();
     super.dispose();
@@ -40,7 +36,6 @@ class _CreateTeamBottomSheetState extends State<CreateTeamBottomSheet> {
       ),
       child: Column(
         children: [
-          // Handle bar ලස්සනට පෙනීමට
           Container(
             width: 60,
             height: 5,
@@ -83,7 +78,7 @@ class _CreateTeamBottomSheetState extends State<CreateTeamBottomSheet> {
               prefixIcon: const Icon(Icons.search, color: Colors.grey),
               filled: true,
               fillColor: Colors.white10,
-              // ShapedInputBorder වෙනුවට OutlineInputBorder භාවිතා කලා 🛠️
+
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
                 borderSide: BorderSide.none,
@@ -211,8 +206,7 @@ class _CreateTeamBottomSheetState extends State<CreateTeamBottomSheet> {
                   memberIds: selectedUserIds,
                 );
 
-                if (!mounted)
-                  return; // Async එකෙන් පස්සේ context එක check කිරීම
+                if (!mounted) return;
                 Navigator.pop(context);
               },
               child: const Text(

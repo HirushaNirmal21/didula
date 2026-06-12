@@ -33,10 +33,7 @@ class _RegisterpageState extends State<Registerpage> {
 
   Future<void> _createUser(BuildContext context) async {
     // ---------------------------------------------------------
-    // 🛑 1. FRONT-END VALIDATIONS (ඩේටා හරිද කියලා චෙක් කිරීම)
-    // ---------------------------------------------------------
 
-    // A. කිසිම ෆීල්ඩ් එකක් හිස්ව තියන්න බැහැ
     if (_nameController.text.trim().isEmpty ||
         _emailController.text.trim().isEmpty ||
         _passwordController.text.trim().isEmpty ||
@@ -46,7 +43,6 @@ class _RegisterpageState extends State<Registerpage> {
       return;
     }
 
-    // B. ඊමේල් එක නිවැරදිද කියලා බලමු (සරලව '@' සහ '.' තියෙනවද කියලා)
     final emailText = _emailController.text.trim();
     if (!emailText.contains("@") || !emailText.contains(".")) {
       UtileFunctions().showSnackBar(
@@ -56,13 +52,11 @@ class _RegisterpageState extends State<Registerpage> {
       return;
     }
 
-    // C. Level එකට ගහලා තියෙන්නේ ඉලක්කමක්ද කියලා බලමු
     if (int.tryParse(_levelController.text.trim()) == null) {
       UtileFunctions().showSnackBar(context, "Level must be a valid number!");
       return;
     }
 
-    // D. පාස්වර්ඩ් එක අකුරු 6කට වඩා වැඩිද කියලා බලමු
     if (_passwordController.text.trim().length < 6) {
       UtileFunctions().showSnackBar(
         context,
@@ -71,7 +65,6 @@ class _RegisterpageState extends State<Registerpage> {
       return;
     }
 
-    // E. පාස්වර්ඩ් දෙක සමානද කියලා බලමු
     if (_passwordController.text.trim() !=
         _confremPasswordController.text.trim()) {
       UtileFunctions().showSnackBar(context, "Passwords do not match!");
@@ -79,10 +72,8 @@ class _RegisterpageState extends State<Registerpage> {
     }
 
     // ---------------------------------------------------------
-    // 🟢 2. FIREBASE REGISTRATION (ඔක්කොම හරි නම් විතරක් මෙතනට එයි)
-    // ---------------------------------------------------------
+
     try {
-      // 1. Firebase Auth එකේ User කෙනෙක්ව Register කරමු
       final userCredential = await AuthService().registerUser(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
@@ -94,7 +85,6 @@ class _RegisterpageState extends State<Registerpage> {
         throw Exception("Firebase UID integration failed.");
       }
 
-      // 2. ප්‍රොෆයිල් ඉමේජ් එකක් තෝරාගෙන තිබේ නම් එය Storage එකට Upload කරමු
       if (_imageFile != null) {
         final imageUrl = await UserProfileStorageService().uploadImage(
           profileImage: _imageFile!,
@@ -103,7 +93,6 @@ class _RegisterpageState extends State<Registerpage> {
         _imageUrlController.text = imageUrl;
       }
 
-      // 3. Firestore එකේ User Document එක සේව් කරමු
       await UserService().saveUser(
         Usermodel(
           userId: firebaseUid,
@@ -117,11 +106,9 @@ class _RegisterpageState extends State<Registerpage> {
         ),
       );
 
-      // 4. සාර්ථකයි කියලා Snackbar එක පෙන්වමු
       if (!mounted) return;
       UtileFunctions().showSnackBar(context, "User created successfully 🎉");
 
-      // 5. Home Page එකට රවුට් කරමු
       GoRouter.of(context).go("/HomePage");
     } catch (e) {
       print('Error signing up: $e');

@@ -9,12 +9,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'dart:ui';
 
-// ⚠️ ඔයාගේ project එකේ මේවා තියෙන නිවැරදි paths වලට import කරගන්න
-// import 'package:your_app/models/rulesmodel.dart';
-// import 'package:your_app/services/ruleservice.dart';
-// import 'package:your_app/utils/util_function.dart';
-// import 'package:your_app/widgets/custominput.dart';
-
 class RulesScreens extends StatefulWidget {
   final FirebaseFirestore firestore;
   final FirebaseAuth auth;
@@ -447,7 +441,6 @@ class _RulesScreensState extends State<RulesScreens> {
                                             ),
                                           ),
 
-                                          // Admin කෙනෙක්ට විතරක් පේන Delete Icon එක
                                           if (userRole == "admin")
                                             IconButton(
                                               icon: const Icon(

@@ -116,12 +116,12 @@ class _AddScreensState extends State<AddScreens> {
           title: Text(
             "Create Post",
             style: GoogleFonts.poppins(
-              letterSpacing: 0.5, // අකුරු අතර පරතරය ලස්සන කළා
+              letterSpacing: 0.5,
               shadows: [
                 Shadow(
                   blurRadius: 10.0,
                   color: Colors.black.withOpacity(0.3),
-                  offset: const Offset(0, 5), // පල්ලෙහාට හෙවනැල්ලක් දාන්න
+                  offset: const Offset(0, 5),
                 ),
               ],
               fontSize: 28,
@@ -141,12 +141,12 @@ class _AddScreensState extends State<AddScreens> {
           title: Text(
             "Create Post",
             style: GoogleFonts.poppins(
-              letterSpacing: 0.5, // අකුරු අතර පරතරය ලස්සන කළා
+              letterSpacing: 0.5,
               shadows: [
                 Shadow(
                   blurRadius: 10.0,
                   color: Colors.black.withOpacity(0.3),
-                  offset: const Offset(0, 5), // පල්ලෙහාට හෙවනැල්ලක් දාන්න
+                  offset: const Offset(0, 5),
                 ),
               ],
               fontSize: 28,
@@ -168,12 +168,12 @@ class _AddScreensState extends State<AddScreens> {
         title: Text(
           "Create Post",
           style: GoogleFonts.poppins(
-            letterSpacing: 0.5, // අකුරු අතර පරතරය ලස්සන කළා
+            letterSpacing: 0.5,
             shadows: [
               Shadow(
                 blurRadius: 10.0,
                 color: Colors.black.withOpacity(0.3),
-                offset: const Offset(0, 5), // පල්ලෙහාට හෙවනැල්ලක් දාන්න
+                offset: const Offset(0, 5),
               ),
             ],
             fontSize: 28,

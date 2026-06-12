@@ -59,11 +59,9 @@ class _TeamCardState extends State<TeamCard> {
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       padding: const EdgeInsets.fromLTRB(20, 14, 20, 18),
       decoration: BoxDecoration(
-        // 🌌 Glassmorphic Background: අනිත් හැම කාඩ් එකකටම ගැලපෙන Premium විනිවිද පෙනෙන ලුක් එක
         color: Colors.white.withOpacity(0.03),
         borderRadius: BorderRadius.circular(25),
 
-        // ⚡ Cyber Team Gradient Border: ටීම් එකක ශක්තිය පේන්න දාපු Electric Indigo සහ Neon Blue බෝඩර් එක
         border: const GradientBoxBorder(
           width: 1.5,
           gradient: LinearGradient(
@@ -77,7 +75,6 @@ class _TeamCardState extends State<TeamCard> {
           ),
         ),
 
-        // 🔮 Neon Glow Shadow: බෝඩර් එක වටෙන් ලාවට දිලිසෙන Glow එකක්
         boxShadow: [
           BoxShadow(
             color: const Color(0xFF6366F1).withOpacity(0.08),
@@ -91,11 +88,9 @@ class _TeamCardState extends State<TeamCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          // 🏆 Header Area: Team Name, Badge & Delete Button
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // ටීම් එකේ නම සහ පුංචි 👥 ඉමෝජි එකක්
               Expanded(
                 child: Row(
                   children: [
@@ -114,7 +109,6 @@ class _TeamCardState extends State<TeamCard> {
                 ),
               ),
 
-              // ඇඩ්මින්ට විතරක් පේන Clean Delete Button එක
               if (userRole == "admin")
                 GestureDetector(
                   onTap: widget.onDelete,
@@ -135,7 +129,6 @@ class _TeamCardState extends State<TeamCard> {
           ),
           const SizedBox(height: 14),
 
-          // 👥 Team Members Section (Horizontal Scroll)
           FutureBuilder(
             future: FirebaseFirestore.instance
                 .collection('users')
@@ -180,9 +173,7 @@ class _TeamCardState extends State<TeamCard> {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: const Color(
-                                  0xFF6366F1,
-                                ).withOpacity(0.4), // සිහින් Neon Indigo රවුමක්
+                                color: const Color(0xFF6366F1).withOpacity(0.4),
                                 width: 1.5,
                               ),
                             ),

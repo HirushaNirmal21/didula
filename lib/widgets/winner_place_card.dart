@@ -7,8 +7,8 @@ class WinnerPlaceCard extends StatefulWidget {
   final String title;
   final String name;
   final String imageUrl;
-  final Gradient borderGradient; // 👈 1. කාඩ් බෝඩර් එකට ග්‍රේඩියන්ට් එක
-  final Gradient avatarGradient; // 👈 2. Avatar බෝඩර් එකට ග්‍රේඩියන්ට් එක
+  final Gradient borderGradient;
+  final Gradient avatarGradient;
   final VoidCallback? onTap;
   final VoidCallback? onDelete;
 
@@ -17,8 +17,8 @@ class WinnerPlaceCard extends StatefulWidget {
     required this.title,
     required this.name,
     required this.imageUrl,
-    required this.borderGradient, // Required කළා
-    required this.avatarGradient, // Required කළා
+    required this.borderGradient,
+    required this.avatarGradient,
     this.onTap,
     this.onDelete,
   });
@@ -95,7 +95,6 @@ class _WinnerPlaceCardState extends State<WinnerPlaceCard> {
           color: Colors.white.withOpacity(0.04), // Glassmorphic background
           borderRadius: BorderRadius.circular(25),
 
-          // ✨ මෙතනට වදින්නේ කාඩ් එකේ බෝඩර් ග්‍රේඩියන්ට් එක:
           border: GradientBoxBorder(width: 2, gradient: widget.borderGradient),
 
           boxShadow: [
@@ -140,7 +139,7 @@ class _WinnerPlaceCardState extends State<WinnerPlaceCard> {
             Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                // ✨ මෙතනට වදින්නේ Avatar එක වටේට ඔයා දෙන වෙනම ග්‍රේඩියන්ට් එක:
+
                 border: GradientBoxBorder(
                   width: 1.5,
                   gradient: widget.avatarGradient,

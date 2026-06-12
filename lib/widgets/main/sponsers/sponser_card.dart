@@ -29,9 +29,8 @@ class _SponsorCardState extends State<SponsorCard> {
   }
 
   Future<void> _fetchUserRole() async {
-    // ඔයාගේ පරණ Firebase Role Logic එක මෙතනට එන්න ඕනේ...
     setState(() {
-      userRole = "admin"; // ටෙස්ට් කිරීමට පමණි
+      userRole = "admin";
       isLoading = false;
     });
   }
@@ -76,7 +75,6 @@ class _SponsorCardState extends State<SponsorCard> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // 🏢 Sponsor Logo/Image Container (Premium Square Rounded Look)
                   Container(
                     width: 85,
                     height: 85,
@@ -94,8 +92,7 @@ class _SponsorCardState extends State<SponsorCard> {
                           : Container(
                               color: const Color(0xFF1E293B),
                               child: const Icon(
-                                Icons
-                                    .business_rounded, // Sponsor කෙනෙක් නිසා බිස්නස් අයිකන් එකක්
+                                Icons.business_rounded,
                                 color: Color(0xFF00D2FF),
                                 size: 35,
                               ),
@@ -127,7 +124,6 @@ class _SponsorCardState extends State<SponsorCard> {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      // Inner Glow Effect එකක් එන්න Fill එක ලාවට දැම්මා
                       color: const Color(0xFF00D2FF).withOpacity(0.1),
                       borderRadius: BorderRadius.circular(30),
                       border: Border.all(
@@ -154,7 +150,6 @@ class _SponsorCardState extends State<SponsorCard> {
     );
   }
 
-  // 🛠️ පරණ Dialog Logic එකම ඩාර්ක් තීම් එකට ගැලපෙන්න හැදුවා
   void _showActionDialog(BuildContext context) {
     showDialog(
       context: context,

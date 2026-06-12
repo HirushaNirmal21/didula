@@ -254,16 +254,14 @@ class _WinTeamsPageState extends State<WinTeamsPage> {
                   ),
                 ),
               ),
-              // 🔄 winnerspage.dart එකේ 257 පේළිය මෙහෙම වෙනස් කරන්න:
-              // 👈 උස 10 සිට 25 දක්වා වැඩි කළා
+
               Divider(
-                color: Colors
-                    .white10, // 👈 රේඛාවේ පාට තද වැඩි නිසා තව ටිකක් ලාවට (white10) දැම්මා Dark Theme එකට ගැලපෙන්න
+                color: Colors.white10,
                 thickness: 1,
                 indent: 20,
                 endIndent: 20,
               ),
-              SizedBox(height: 15), // Divider එකට පල්ලෙහායිනුත් පොඩි ඉඩක්
+              SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
@@ -285,7 +283,6 @@ class _WinTeamsPageState extends State<WinTeamsPage> {
                 ],
               ),
 
-              // 🛠️ FIX: Row -> Expanded -> Padding රටාවට සකස් කරන ලදී
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -470,9 +467,6 @@ class _WinTeamsPageState extends State<WinTeamsPage> {
       ),
     );
   }
-
-  // පහළ තියෙන ඔයාගේ අනෙක් Widget Functions (e.g. _buildSeniorCard, _buildFirstPlace...)
-  // වෙනස් කිරීමක් අවශ්‍ය නැත, ඒවා එලෙසම තබා ගන්න.
 
   Widget _buildSeniorCard() {
     return StreamBuilder(
@@ -709,7 +703,7 @@ class _WinTeamsPageState extends State<WinTeamsPage> {
 
             return WinnerPlaceCard(
               title: "1st Place",
-              // ⚡ Null safety ආරක්ෂාව යෙදුවා
+
               name: user['name'] ?? 'Unknown',
               imageUrl: user['imageUrl'] ?? '',
               avatarGradient: goldGradient,

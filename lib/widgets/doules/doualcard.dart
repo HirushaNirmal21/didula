@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_borders/gradient_borders.dart'; // 👈 මේක අනිවාර්යයෙන්ම ඕනේ hode!
+import 'package:gradient_borders/gradient_borders.dart';
 
 class DoualCard extends StatefulWidget {
   final String doualId;
