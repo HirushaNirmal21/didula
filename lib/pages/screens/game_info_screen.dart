@@ -77,6 +77,8 @@ class _GameInfoPageState extends State<GameInfoPage> {
 
           children: [
             Container(
+              height: 150,
+              width: double.infinity,
               margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 4),
 
               decoration: BoxDecoration(
