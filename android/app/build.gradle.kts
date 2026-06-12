@@ -2,12 +2,13 @@ plugins {
     id("com.android.application")
     // START: FlutterFire Configuration
     id("com.google.gms.google-services")
-    id("com.google.firebase.firebase-perf")
+  
     id("com.google.firebase.crashlytics")
     // END: FlutterFire Configuration
     id("org.jetbrains.kotlin.android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+    
 }
 
 import java.util.Properties
@@ -50,7 +51,7 @@ android {
     }
     signingConfigs {
         create("release") {
-            // දැනට key.properties නැති නිසා Null නොවී බේරෙන්න මෙහෙම දෙමු
+            
             keyAlias = keystoreProperties["keyAlias"] as? String ?: ""
             keyPassword = keystoreProperties["keyPassword"] as? String ?: ""
             storeFile = keystoreProperties["storeFile"]?.let { file(it) }
@@ -60,8 +61,7 @@ android {
 
     buildTypes {
         release {
-            // ⚡ මුලින්ම බිල්ඩ් එක සක්සස් කරගන්න මෙතනට "debug" config එක දෙන්න.
-            // එතකොට key.properties නැතත් ඇප් එක බිල්ඩ් වෙනවා!
+            
             signingConfig = signingConfigs.getByName("debug")
         }
     }
@@ -70,3 +70,5 @@ android {
 flutter {
     source = "../.."
 }
+
+
