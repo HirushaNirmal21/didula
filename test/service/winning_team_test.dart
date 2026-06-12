@@ -13,7 +13,6 @@ void main() {
       winTeamService = WinTeamservise(firestore: fakeFirestore);
     });
 
-    // 1 වන ටෙස්ට් එක: Win Team එකක් සාර්ථකව සෑදීම ටෙස්ට් කිරීම
     test('should create a win team with member IDs successfully', () async {
       await winTeamService.createWinTeam(
         winteamName: 'Invincibles XI',
@@ -30,7 +29,6 @@ void main() {
       expect(docData['createdAt'], isNotNull);
     });
 
-    // 2 වන ටෙස්ට් එක: Win Team එකක් සාර්ථකව ඩිලීට් කිරීම
     test('should delete a win team successfully', () async {
       await fakeFirestore.collection('winteam').doc('WIN_T_999').set({
         'winteamid': 'WIN_T_999',
@@ -46,7 +44,6 @@ void main() {
       expect(doc.exists, false);
     });
 
-    // 3 වන ටෙස්ට් එක: getWinTeam Stream එකෙන් අලුත්ම එක මුලට එන විදිහට දත්ත ලැබෙනවාද බැලීම
     test('should stream win teams ordered by createdAt descending', () async {
       await fakeFirestore.collection('winteam').doc('WT1').set({
         'winteamName': 'First Champion',
@@ -61,7 +58,7 @@ void main() {
       final snapshot = await winTeamService.getWinTeam().first;
 
       expect(snapshot.docs.length, 2);
-      // Descending නිසා අලුත්ම එක ('Latest Champion') මුලින්ම තිබිය යුතුය
+
       expect(snapshot.docs.first.get('winteamName'), 'Latest Champion');
     });
   });

@@ -14,7 +14,6 @@ void main() {
       );
     });
 
-    // 1 වන ටෙස්ට් එක: 1st, 2nd, 3rd ස්ථාන වලට dualId එක සාර්ථකව සෙට් වෙනවාද බැලීම
     test(
       'should set senior dual 1st, 2nd, and 3rd place winners successfully',
       () async {
@@ -46,7 +45,6 @@ void main() {
       },
     );
 
-    // 2 වන ටෙස්ට් එක: ස්ථාන වල තියෙන ඩේටා සාර්ථකව අයින් (Delete) කරන්න පුළුවන්ද බැලීම
     test('should remove senior dual winners successfully', () async {
       final collection = fakeFirestore.collection('senior_dual_winners');
       await collection.doc('first').set({'doualId': 'OLD_1ST'});
@@ -66,7 +64,6 @@ void main() {
       expect(thirdDoc.exists, false);
     });
 
-    // 3 වන ටෙස්ට් එක: Streams (getFirstPlace) හරහා නිවැරදිව රියල්-ටයිම් ඩේටා ලැබෙනවාද බැලීම
     test(
       'should stream senior dual first place document snapshot correctly',
       () async {

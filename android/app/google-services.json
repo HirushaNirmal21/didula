@@ -12,7 +12,20 @@
           "package_name": "com.example.didula_api"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "418908483257-qsede4b15blqn7lrbcmd853tplrf768u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.didula_api",
+            "certificate_hash": "60403f8b0c4b69d6e60b1f2d955805f4adc2c8e3"
+          }
+        },
+        {
+          "client_id": "418908483257-hv5pe374t1d7sk1u271too52nmbt3be3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyD7dwgP6Ak4__LQNcOEERdpPqbn-mN0UKM"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418908483257-hv5pe374t1d7sk1u271too52nmbt3be3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "418908483257-b0fnvhemlegb1439d73o4p35d51jks14.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.didulaApi"
+              }
+            }
+          ]
         }
       }
     }

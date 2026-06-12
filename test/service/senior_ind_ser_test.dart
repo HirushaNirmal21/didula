@@ -14,7 +14,6 @@ void main() {
       );
     });
 
-    // 1 වන ටෙස්ට් එක: Senior 1st, 2nd, 3rd ස්ථාන සාර්ථකව සෙට් වෙනවාද බැලීම
     test(
       'should set senior 1st, 2nd, and 3rd place winners successfully',
       () async {
@@ -46,7 +45,6 @@ void main() {
       },
     );
 
-    // 2 වන ටෙස්ට් එක: ජයග්‍රාහකයින්ව සාර්ථකව අයින් (Delete) කරන්න පුළුවන්ද බැලීම
     test(
       'should remove senior 1st, 2nd, and 3rd place winners successfully',
       () async {
@@ -57,7 +55,6 @@ void main() {
         await collection.doc('second').set({'userId': 'OLD_SENIOR_2ND'});
         await collection.doc('third').set({'userId': 'OLD_SENIOR_3RD'});
 
-        // අයින් කරන functions රන් කරනවා
         await seniorIndividualService.removeFirstPlace();
         await seniorIndividualService.removeSecondPlace();
         await seniorIndividualService.removeThirdPlace();
@@ -72,7 +69,6 @@ void main() {
       },
     );
 
-    // 3 වන ටෙස්ට් එක: Streams (getFirstPlace) හරහා නිවැරදිව දත්ත ලැබෙනවාද බැලීම
     test(
       'should stream senior first place winner document snapshot correctly',
       () async {

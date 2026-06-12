@@ -1,7 +1,6 @@
 import 'package:didula_api/services/junior_individualservice.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
-// ⚠️ ඔයාගේ project එකේ හැටියට මේ import path එක නිවැරදි කරගන්න
 
 void main() {
   group('JuniorIndividualService Tests with Fake Firestore', () {
@@ -15,7 +14,6 @@ void main() {
       );
     });
 
-    // 1 වන ටෙස්ට් එක: ස්ථාන 3ම සාර්ථකව සෙට් වෙනවාද බැලීම
     test('should set 1st, 2nd, and 3rd place winners successfully', () async {
       await juniorIndividualService.setJuniorFirstPlace('USER_1ST');
       await juniorIndividualService.setJuniorSecondPlace('USER_2ND');
@@ -44,11 +42,9 @@ void main() {
       expect(thirdDoc.data()?['userId'], 'USER_3RD');
     });
 
-    // 2 වන ටෙස්ට් එක: ජයග්‍රාහකයින්ව සාර්ථකව අයින් (Delete) කරන්න පුළුවන්ද බැලීම
     test(
       'should remove 1st, 2nd, and 3rd place winners successfully',
       () async {
-        // මුලින්ම Fake Firestore එකට ඩේටා දානවා
         final collection = fakeFirestore.collection(
           'junior_individual_winners',
         );
@@ -56,7 +52,6 @@ void main() {
         await collection.doc('secondplace').set({'userId': 'OLD_2ND'});
         await collection.doc('thirdplace').set({'userId': 'OLD_3RD'});
 
-        // අයින් කරන functions රන් කරනවා
         await juniorIndividualService.removeJuniorFirstPlace();
         await juniorIndividualService.removeJuniorSecondPlace();
         await juniorIndividualService.removeJuniorThirdPlace();
@@ -71,7 +66,6 @@ void main() {
       },
     );
 
-    // 3 වන ටෙස්ට් එක: Streams (getJuniorFirstPlace වගේ ඒවා) හරහා නිවැරදිව දත්ත ලැබෙනවාද බැලීම
     test(
       'should stream first place winner document snapshot correctly',
       () async {

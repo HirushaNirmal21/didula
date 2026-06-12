@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
-// ⚠️ ඔයාගේ project එකේ හැටියට මේ import path එක නිවැရදි කරගන්න
 import 'package:didula_api/services/teamservise.dart';
 
 void main() {
@@ -14,7 +13,6 @@ void main() {
       teamService = Teamservise(firestore: fakeFirestore);
     });
 
-    // 1 වන ටෙස්ට් එක: Members List එකක් සහිතව Team එකක් සාර්ථකව සෑදීම ටෙස්ට් කිරීම
     test('should create a team with members list successfully', () async {
       await teamService.createTeam(
         teamName: 'Alliance FC',
@@ -28,13 +26,11 @@ void main() {
       expect(docData['teamName'], 'Alliance FC');
       expect(docData['teamid'], snapshot.docs.first.id);
 
-      // Members List එක හරියටම Array එකක් විදිහට වැටිලද බලයි
       expect(docData['members'], isA<List>());
       expect(docData['members'], ['USER_X', 'USER_Y', 'USER_Z']);
       expect(docData['createdAt'], isNotNull);
     });
 
-    // 2 වන ටෙස්ට් එක: Team එකක් සාර්ථකව ඩිලීට් කිරීම
     test('should delete a team successfully', () async {
       await fakeFirestore.collection('teams').doc('TEAM_111').set({
         'teamid': 'TEAM_111',
@@ -44,10 +40,9 @@ void main() {
       await teamService.deleteTeam('TEAM_111');
 
       final doc = await fakeFirestore.collection('teams').doc('TEAM_111').get();
-      expect(doc.exists, false); // මැකී ඇති නිසා false විය යුතුය
+      expect(doc.exists, false);
     });
 
-    // 3 වන ටෙස්ට් එක: getTeams Stream එකෙන් අලුත්ම Team එක මුලට එන විදිහට ලිස්ට් එක ලැබෙනවාද බැලීම
     test('should stream teams ordered by createdAt descending', () async {
       await fakeFirestore.collection('teams').doc('T1').set({
         'teamName': 'Old Team',
@@ -62,7 +57,7 @@ void main() {
       final snapshot = await teamService.getTeams().first;
 
       expect(snapshot.docs.length, 2);
-      // Descending නිසා අලුත්ම එක ('New Team') මුලින්ම තිබිය යුතුය
+
       expect(snapshot.docs.first.get('teamName'), 'New Team');
       expect(snapshot.docs.last.get('teamName'), 'Old Team');
     });
